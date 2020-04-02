@@ -1,14 +1,13 @@
-# Stat Basics
+# PHP Data Analytics
 
-Stat basic is a web based application. The application reads numerial data from excel file. The file that has only one column with a column heading. Data are
-saved in the database also. Then calculate average of the given data. 
+php Data Analytics is a web based application based on customized framework. The application reads numerial data from excel file. The file that has only one column with a column heading. Data are saved in the database also. Then calculate average of the given data. 
 
 ## Future Update
-As this is the application of showing basics of statistics. So, It will keep updating.   
+It will be keep updating as it is in under development.   
 
 ## Technologies
 
-PHP 7.2 
+PHP 7.2, Mysql
 
 
 ## Authors
