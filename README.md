@@ -2,9 +2,9 @@
 
 Its a web based application. The application reads numerial data from a excel file. The file that has only one column with a column heading. Then calculate average, variance and standard deviation of the given data. MVC pattern is followed for developing this application.
 
-![Screenshot](screen shot/ex_excel.png)
-![Screenshot](screen shot/home.png)
-![Screenshot](screen shot/stat.png)
+![Screenshot](screen_shot/ex_excel.png)
+![Screenshot](screen_shot/home.png)
+![Screenshot](screen_shot/stat.png)
 
 ## Technologies
 
@@ -26,7 +26,7 @@ This version is not a full and final application. Thats why the manual is not at
   -uploads: Uploaded files are keept here  
   -view: folder contains view files  
   -index.php: Home page class  
-  -screen shot: images of application's output  
+  -screen_shot: images of application's output  
   -example file.xlsx  
 
 ## Future Update
