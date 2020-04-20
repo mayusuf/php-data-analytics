@@ -30,7 +30,7 @@ This version is not a full and final application. Thats why the manual is not at
   -example file.xlsx  
 
 ## Future Update
-The application is being developed. So, It will keep updating time to time.  
+The application is being developed. So, It will be updating time to time.  
 
 ## Authors
 
