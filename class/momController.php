@@ -4,7 +4,7 @@ DEFINE('DS', DIRECTORY_SEPARATOR);
 
 include './class/DB.php';
 
-class MomController extends DB{
+class momController extends DB{
 	
 	public $view;
 	public $data;
@@ -31,6 +31,13 @@ class MomController extends DB{
 		}
 			
 		
+	}
+	
+	protected function loadStatistic($data){
+
+		include './class/statisticsController.php';
+		$stat = new statisticsController($data);
+		return $stat;
 	}
 	
 }

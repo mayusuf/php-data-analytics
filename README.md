@@ -17,16 +17,16 @@ PHP 7.2, Mysql
 This version is not a full and final application. Thats why the manual is not attached here. But anyone can run this application under the apache server with the supporting technologies mentioned in the Technologies section. Simply keep the folder in the root directory server and configure the database setting in the file DB.php which is located in class folder. 
 
 ## Folder and File Structure (Model-Ciew-Controller)
-  -class: folder
-  --DB.php: Database configuration clas
-  --momController.php: The base controller class 
-  --statisticsController.php: class for handeling statistics functions
-  -lib:folder contains library for handeling excel file
-  -uploads: Uploaded files are keept here
-  -view: folder contains view files
-  -index.php: Home page class
-  -screen shot: images of application's output
-  -example file.xlsx
+  -class: folder  
+  --DB.php: Database configuration clas  
+  --momController.php: The base controller class  
+  --statisticsController.php: class for handeling statistics functions  
+  -lib:folder contains library for handeling excel file  
+  -uploads: Uploaded files are keept here  
+  -view: folder contains view files  
+  -index.php: Home page class  
+  -screen shot: images of application's output  
+  -example file.xlsx  
 
 ## Future Update
 The application is being developed. So, It will keep updating time to time.  

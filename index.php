@@ -1,17 +1,31 @@
 <?php
 
+/*
+#title           :index.php
+#description     :This script is the entry point of the application. Upload the excel file.
+#author		 	 :Abu Yusuf
+#date            :20200313
+#version         :1.1.1   
+#usage		     :Show landing page and form. 
+#notes           :Install minimum PHP 7.2, MySQL.
+#Github 		 :https://github.com/mayusuf/php-data-analytics
+*/ 
+
 include './class/momController.php';
 include './lib/SimpleXLSX.php';
 
-class IndexController extends MomController{
+
+class indexController extends momController{
 	
 	public $title = "Excel File Uploader";
-	
+	public $stat;
+
 	public function __construct(){
 		parent::__construct();
 	}
 	
 	public function index(){
+
 		$data['title'] = $this->title;
 		$this->loadView('',$data);
 	}
@@ -24,33 +38,50 @@ class IndexController extends MomController{
 		try {
 			if($files['file_upload']){
 				
-					move_uploaded_file($files['file_upload']['tmp_name'],'uploads/'.$files['file_upload']['name']);
-					
-					if ( $xlsx = SimpleXLSX::parse('uploads/'.$files['file_upload']['name']) ) {
-						
-						echo '<table><tbody>';
-						
-						$i = 0;
+					$is_uploaded = move_uploaded_file($files['file_upload']['tmp_name'],'uploads/'.$files['file_upload']['name']);
 
-						foreach ($xlsx->rows() as $elt) {
-							if ($i == 0) {
-								echo "<tr><th>" . $elt[0] . "</th></tr>";
-							}else {
-								echo "<tr><td>" . $elt[0] . "</td></tr>";
-							}      
+					if($is_uploaded){
 
-						  $i++;
+						if ( $xlsx = SimpleXLSX::parse('uploads/'.$files['file_upload']['name']) ) {
+								
+								//print_r($xlsx->rows()[][]);
+
+								echo '<table><tbody>';
+								
+								$i = 0;
+
+								foreach ($xlsx->rows() as $elt) {
+									if ($i == 0) {
+										echo "<tr><th>" . $elt[0] . "</th></tr>";
+									}else {
+										echo "<tr><td>" . $elt[0] . "</td></tr>";
+									}      
+
+								  $i++;
+								}
+
+								echo "</tbody></table>";
+								
+								$this->stat= $this->loadStatistic($xlsx->rows());
+								
+								$average = $this->stat->average();
+
+								$variance = $this->stat->variance();
+
+								$sd = $this->stat->standardDeviation();
+
+								//$average = $this->saveData($xlsx->rows());
+
+								echo "Average:". $average;
+								echo "<br>";
+								echo "Variance:".$variance;
+								echo "<br>";
+								echo "Standard Deviation:".$sd;
+
+							} else {
+								throw new Exception('Excel Parse Error'); 
+								echo SimpleXLSX::parseError();
 						}
-
-						echo "</tbody></table>";
-						
-						$average = $this->save_data($xlsx->rows());
-						echo "Average:". number_format($average, 3);
-
-					} else {
-						throw new Exception('Excel Parse Error'); 
-						echo SimpleXLSX::parseError();
-						
 					}
 			}
 		}catch(Exception $e){
@@ -59,7 +90,7 @@ class IndexController extends MomController{
 		
 	}
 	
-	private function save_data($rows){
+	private function saveData($rows){
 		
 		$i = 0;
 		$sum = 0;
@@ -80,7 +111,7 @@ class IndexController extends MomController{
 	}
 }
 
-$obj  = new IndexController();
+$obj  = new indexController();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['action']){    
 
