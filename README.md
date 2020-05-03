@@ -1,6 +1,6 @@
 # PHP Data Analytics
 
-Its a web based application. The application reads numerial data from a excel file. The file that has only one column with a column heading. Then calculate average, variance and standard deviation of the given data. MVC pattern is followed for developing this application.
+Its a web based application. The application reads numerical data from an excel file. The file that has only one column with a column heading. Then calculate average, variance and standard deviation of the given data. MVC pattern is followed for developing this application.
 
 ![Screenshot](screen_shot/ex_excel.png)
 ![Screenshot](screen_shot/home.png)
