@@ -10,16 +10,51 @@
 #Github 		 :https://github.com/mayusuf/php-data-analytics
 */ 
 	
-	header("Content-Type: application/json; charset=UTF-8");
-	header("Access-Control-Allow-Origin:*");
-
-	if($_GET['key']=="1234567890"){
+	
+	class apiController{
 		
-	    $login_info = [
-		    "items"=>[["uname"=>"yusuf","password"=>"123456"],["uname"=>"nadim","password"=>"12345678"]]
-		    ];
+		function __construct(){
+			# code...
+		}
 
-		echo json_encode($login_info);	
+		public function getApi($key){
 
+			header("Content-Type: application/json; charset=UTF-8");
+			header("Access-Control-Allow-Origin:*");
+
+			if($key=="1234567890"){
+				
+			    $login_info = [
+				    "items"=>[["uname"=>"yusuf api","password"=>"123456"],["uname"=>"nadim","password"=>"12345678"]]
+				    ];
+
+				echo json_encode($login_info);	
+
+				}
+		}
 	}
+
+if($_SERVER['PATH_INFO']){
+
+	//print_r($_SERVER);
+	$obj  = new apiController();
+
+	$func = substr($_SERVER['PATH_INFO'],1);
+
+	$obj->$func($_GET['key']);	
+
+}
+
+	// header("Content-Type: application/json; charset=UTF-8");
+	// header("Access-Control-Allow-Origin:*");
+
+	// if($_GET['key']=="1234567890"){
+		
+	//     $login_info = [
+	// 	    "items"=>[["uname"=>"yusuf","password"=>"123456"],["uname"=>"nadim","password"=>"12345678"]]
+	// 	    ];
+
+	// 	echo json_encode($login_info);	
+
+	// }
 ?>

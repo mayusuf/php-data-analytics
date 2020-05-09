@@ -138,15 +138,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['action']){
 	$obj->$func($_POST,$_FILES);
 
 }
-else if($_SERVER['PATH_INFO']){
-
-	//print_r($_SERVER);
-	
-	$func = substr($_SERVER['PATH_INFO'],1);
-
-	$obj->$func($_GET['key']);	
-
-}
 else{
 
 	$obj->index();	
