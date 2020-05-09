@@ -109,6 +109,24 @@ class indexController extends momController{
 		return $average;
 		
 	}
+
+	public function getApi($key){
+
+	header("Content-Type: application/json; charset=UTF-8");
+	header("Access-Control-Allow-Origin:*");
+
+	if($key=="1234567890"){
+		
+	    $login_info = [
+		    "items"=>[["uname"=>"yusuf hasan","password"=>"123456"],["uname"=>"nadim","password"=>"12345678"]]
+		    ];
+
+		echo json_encode($login_info);	
+
+		}
+	}
+
+	
 }
 
 $obj  = new indexController();
@@ -118,7 +136,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['action']){
 	$func  = $_POST['action'];
 	
 	$obj->$func($_POST,$_FILES);
+
+}
+else if($_SERVER['PATH_INFO']){
+
+	//print_r($_SERVER);
+	
+	$func = substr($_SERVER['PATH_INFO'],1);
+
+	$obj->$func($_GET['key']);	
+
+}
+else{
+
+	$obj->index();	
 }
 
-$obj->index();
+
 ?>
